@@ -50,6 +50,7 @@ public class NetworkingService {
            String urlfinal = url1 + "s"+url2;
            fetchImage(urlfinal);
         System.out.println("This is my final url"+urlfinal);
+        System.out.println("This is my final url"+urlfinal);
 
     }
 
