@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements
             public boolean onQueryTextChange(String newText) {
                 Log.d("query change", newText);
                 if (newText.length() >= 3) {
-                    networkingService.connect(newText);
+                    networkingService.fetchFruitsName(newText);
                 } else {
                     adapter.fruitList = new ArrayList<>(0);
                     adapter.notifyDataSetChanged();
@@ -90,4 +91,10 @@ public class MainActivity extends AppCompatActivity implements
         adapter.fruitList = fruits;
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void APINetworkListnerForImage(Bitmap image) {
+
+    }
+
 }

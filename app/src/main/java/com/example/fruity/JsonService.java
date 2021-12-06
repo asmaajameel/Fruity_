@@ -26,38 +26,41 @@ public class JsonService {
         return  fruitFromAPI;
     }
 
-//    public ArrayList<Fruit> parseCitiesAPIJson(String jsonCities){
-//        //
-//        ArrayList<Fruit> allCitiesFromAPI = new ArrayList<>(0);
-//        try {//
-//            JSONArray jsonArray = new JSONArray(jsonCities);
-//            for (int i = 0 ; i< jsonArray.length(); i++){
-//               String cityName = jsonArray.getString(i);
-//                Fruit newCity = new Fruit(jsonArray.getString(i));
-//                allCitiesFromAPI.add(new Fruit(jsonArray.getString(i)));
-//            }
+//    ArrayList<Fruit> plantFromAPI;
+//    public ArrayList<Fruit> parseCitiesAPI2Json(String jsonPlantString){
+//        Fruit plant = new Fruit();
+//        plantFromAPI = new ArrayList<>(0);
+//        try {
+//            JSONObject jsonObject = new JSONObject(jsonPlantString);// root
+//            JSONArray plantArray = jsonObject.getJSONArray("results");
+//            JSONObject plantObject = plantArray.getJSONObject(0);
+//            String pid1 = plantObject.getString("imageurl");
+//            String pid2 = plantObject.getString("tfvname");
+//            String pid3 = plantObject.getString("uses");
+//            String pid4 = plantObject.getString("health");
+//
+////        JSONObject mainObject = jsonObject.getJSONObject("main");
+////        Double temp = mainObject.getDouble("temp");
+//            plant = new Fruit(pid2);
+//            plantFromAPI.add(plant);
+//
 //        } catch (JSONException e) {
 //            e.printStackTrace();
 //        }
-//        return allCitiesFromAPI;
-//   }
-}
-
-
-
-
-//    public ArrayList<City> parseCitiesAPIJson(String jsonCities){
-//        //
-//        ArrayList<City> allCitiesFromAPI = new ArrayList<>(0);
-//        try {//
-//            JSONArray jsonArray = new JSONArray(jsonCities);
-//            for (int i = 0 ; i< jsonArray.length(); i++){
-////                String cityName = jsonArray.getString(i);
-////                City newCity = new City(jsonArray.getString(i));
-//                allCitiesFromAPI.add(new City(jsonArray.getString(i)));
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return allCitiesFromAPI;
+//        return  plantFromAPI;
+//
 //    }
+    public  FruitData  parseFruitsSecondAPIJson(String jsonFruitInfoString) throws JSONException {
+        FruitData fruitData;
+        JSONObject jsonObject = new JSONObject(jsonFruitInfoString);
+        JSONArray fruitsInfoArray = jsonObject.getJSONArray("results");
+        JSONObject fruitObject = fruitsInfoArray.getJSONObject(0);
+        String imageString = fruitObject.getString("imageurl");
+        String desString   = fruitObject.getString("description");
+        String usesString  = fruitObject.getString("uses");
+        String healthString = fruitObject.getString("health");
+
+        fruitData = new FruitData(desString,imageString,usesString,healthString);
+        return fruitData;
+    }
+}
