@@ -1,9 +1,13 @@
 package com.example.fruity;
 
-public class Fruit {
-    private int id;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    private String fruitName;
+@Entity
+public class Fruit {
+ @PrimaryKey(autoGenerate = true)
+    public int id;
+    public String fruitName;
 
     Fruit(){}
     public Fruit(String fruit) {

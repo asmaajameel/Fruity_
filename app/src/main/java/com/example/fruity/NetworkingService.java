@@ -31,17 +31,6 @@ public class NetworkingService {
 
     }
     NetworkingListener listener;
-    /*private  void attemptstonumber(String attempt){
-        System.out.println("Attempt in 86"+attempt);
-        for(int i = 0; i< attempt.toCharArray().length;i++)
-            if(attempt.toCharArray()[i] == '*')
-            {   String totalques = attempt.substring(0,i);
-                String totalans = attempt.substring(i+1,attempt.toCharArray().length);
-                scoreslist.add(Integer.parseInt(totalans));
-                totalqnslist.add(Integer.parseInt(totalques));
-            }
-    }*/
-    ////http  ://tropicalfruitandveg.com/images/almondfruit.jpg
 
     public void makeURL(String url){
        // String url = "http://tropicalfruitandveg.com/thumb.php?image=images/almondfruit.jpg";
@@ -53,22 +42,6 @@ public class NetworkingService {
         System.out.println("This is my final url"+urlfinal);
 
     }
-
-
-
-
-
-//    public String  fromStringToAttempt(){
-//        //4!8#2!8#
-//        attempts = 0;
-//        int i;
-//        for ( i = 0 ; i < data.toCharArray().length ; i++){
-//            if (data.toCharArray()[i] == '#'){
-//                attempts++;
-//            }
-//        }
-//        return attempts;
-//    }
 public  void fetchFruitsName(String text){
     String completeURL = fruitNameUrl + text;
     connect(completeURL);
