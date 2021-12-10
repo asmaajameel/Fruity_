@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements DatabaseService.D
 
         list = findViewById(R.id.dbFruits);
         list.setLayoutManager(new LinearLayoutManager(this));
-        //adapter = new dbFruitsAdapter(this,new ArrayList<>(0));
-      //  adapter.listner = this;
+        adapter = new dbFruitsAdapter(this,new ArrayList<>(0));
+        adapter.listner = this;
     }
 
     public void addNewFruit(View view) {
