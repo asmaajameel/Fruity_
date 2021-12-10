@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements DatabaseService.D
     DatabaseService dbService;
     dbFruitsAdapter adapter;
     RecyclerView list;
+    ArrayList<Fruit> newFruit=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements DatabaseService.D
         list.setLayoutManager(new LinearLayoutManager(this));
         adapter = new dbFruitsAdapter(this,new ArrayList<>(0));
         adapter.listner = this;
+
     }
 
     public void addNewFruit(View view) {
@@ -39,8 +41,12 @@ public class MainActivity extends AppCompatActivity implements DatabaseService.D
 
     @Override
     public void databaseFruitListener(List<Fruit> dbFruit) {
-        adapter.fruitList = dbFruit;
-        adapter.notifyDataSetChanged();
+//        adapter.fruitList = dbFruit;
+//        adapter.notifyDataSetChanged();
+        newFruit=new ArrayList<Fruit>(dbFruit);
+        dbFruitsAdapter myAdapter = new dbFruitsAdapter(this,newFruit);
+        list.setAdapter(myAdapter);
+
     }
 
     @Override

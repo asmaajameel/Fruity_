@@ -23,6 +23,7 @@ public class SearchActivity extends AppCompatActivity implements
     FruitAdapter adapter;
     NetworkingService networkingService;
     JsonService jsonService;
+    DatabaseService dbService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class SearchActivity extends AppCompatActivity implements
         adapter = new FruitAdapter(this,fruits);
         recyclerView.setAdapter(adapter);
         setTitle("Search for Favourite Fruit..");
-
+        dbService = ((myApp)getApplication()).getDbService();
         networkingService = ( (myApp)getApplication()).getNetworkingService();
         jsonService = ( (myApp)getApplication()).getJsonService();
 
@@ -76,13 +77,26 @@ public class SearchActivity extends AppCompatActivity implements
         });
         return true;
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        networkingService = ( (myApp)getApplication()).getNetworkingService();
+        jsonService = ( (myApp)getApplication()).getJsonService();
+        networkingService.listener = this;
+    }
 
     @Override
-    public void fruitClicked(Fruit selectedFruit) {
-        Intent intent = new Intent(this,FruitInfoActivity.class);
-        intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
-        startActivity(intent);
+    public void fruitClicked(Fruit selectedCity) {
+        // show an alert to ask the usr for saving this city to db
+        dbService.saveNewFruit(selectedCity);
+        finish();
     }
+//    @Override
+//    public void fruitClicked(Fruit selectedFruit) {
+//        Intent intent = new Intent(this,FruitInfoActivity.class);
+//        intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
+//        startActivity(intent);
+//    }
 
     @Override
     public void APINetworkListner(String jsonString) {
