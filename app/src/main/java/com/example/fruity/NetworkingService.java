@@ -17,8 +17,8 @@ import java.util.concurrent.Executors;
 public class NetworkingService {
 
     public static final ExecutorService networkingExecutor = Executors.newFixedThreadPool(4);
-    String fruitNameUrl = "https://tropicalfruitandveg.com/api/tfvjsonapi.php?search=";
-    String fruitInfoUrl = "https://tropicalfruitandveg.com/api/tfvjsonapi.php?tfvitem=";
+    String fruitNameUrl = "http://tropicalfruitandveg.com/api/tfvjsonapi.php?search=";
+    String fruitInfoUrl = "http://tropicalfruitandveg.com/api/tfvjsonapi.php?tfvitem=";
 //    String imageUrl1 = "http://tropicalfruitandveg.com/images/";
 //    String imageUrl2 = ".jpg";//http://tropicalfruitandveg.com/images/almondfruit.jpg
      String url1,url2;
@@ -28,7 +28,6 @@ public class NetworkingService {
     interface NetworkingListener{
         void APINetworkListner(String jsonString);
         void APINetworkListnerForImage(Bitmap image);
-
     }
     NetworkingListener listener;
 
@@ -39,13 +38,13 @@ public class NetworkingService {
            String urlfinal = url1 + "s"+url2;
            fetchImage(urlfinal);
         System.out.println("This is my final url"+urlfinal);
-        System.out.println("This is my final url"+urlfinal);
-
     }
+
 public  void fetchFruitsName(String text){
     String completeURL = fruitNameUrl + text;
     connect(completeURL);
 }
+
 public  void fetchFruitsInfo(String fruitName){
     String completeURL = fruitInfoUrl + fruitName;
     connect(completeURL);

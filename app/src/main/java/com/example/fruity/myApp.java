@@ -7,16 +7,16 @@ public class myApp extends Application {
     public NetworkingService getNetworkingService() {
         return networkingService;
     }
-
-    DatabaseService dbService = new DatabaseService();
+    private final NetworkingService networkingService = new NetworkingService();
 
     public DatabaseService getDbService() {
         return dbService;
     }
-    private NetworkingService networkingService = new NetworkingService();
-    private JsonService jsonService = new JsonService();
+    private final DatabaseService dbService = new DatabaseService();
 
     public JsonService getJsonService() {
         return jsonService;
     }
+    private final JsonService jsonService = new JsonService();
 }
+

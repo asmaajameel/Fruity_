@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+<!--    &lt;!&ndash; android:numColumns=2 is the number of columns for Grid View-->
+<!--         android:horizontalSpacing is the space between horizontal-->
+<!--         grid items.&ndash;&gt;-->
+<!--    <GridView-->
+<!--        android:id="@+id/idGVcourses"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:horizontalSpacing="6dp"-->
+<!--        android:numColumns="2"-->
+<!--        android:verticalSpacing="6dp" />-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dbFruits"
         android:layout_width="match_parent"

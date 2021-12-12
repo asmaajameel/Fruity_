@@ -40,6 +40,7 @@ public class SearchActivity extends AppCompatActivity implements
 
 
         networkingService.listener = this;
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,6 +55,7 @@ public class SearchActivity extends AppCompatActivity implements
         if (!searchFor.isEmpty()) {
             searchView.setIconified(false);
             searchView.setQuery(searchFor, false);
+
         }
 
         searchView.setQueryHint("Search for fruits");
@@ -66,7 +68,7 @@ public class SearchActivity extends AppCompatActivity implements
             @Override
             public boolean onQueryTextChange(String newText) {
                 Log.d("query change", newText);
-                if (newText.length() >= 1) {
+                if (newText.length() >= 2) {
                     networkingService.fetchFruitsName(newText);
                 } else {
                     adapter.fruitList = new ArrayList<>(0);
@@ -86,10 +88,16 @@ public class SearchActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void fruitClicked(Fruit selectedCity) {
+    public void fruitClicked(Fruit selectedFruit) {
         // show an alert to ask the usr for saving this city to db
-        dbService.saveNewFruit(selectedCity);
+
+        Intent intent = new Intent(this,FruitInfoActivity.class);
+        intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
+        startActivity(intent);
+        dbService.saveNewFruit(selectedFruit);
         finish();
+//        Intent searchIntent = new Intent(this, FruitInfoActivity.class);
+//        startActivity(searchIntent);
     }
 //    @Override
 //    public void fruitClicked(Fruit selectedFruit) {

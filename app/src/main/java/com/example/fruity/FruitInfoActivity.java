@@ -16,25 +16,28 @@ public class FruitInfoActivity extends AppCompatActivity implements
         NetworkingService.NetworkingListener,
         View.OnClickListener ,
         DescriptionFragment.AddDesFruitListener{
+
     TextView fruitTxt;
     String desText;
     TextView fruitInfoText;
     ImageView imageView;
     NetworkingService networkingService;
     JsonService jsonService;
-Button descriptionTxt;
+  Button descriptionTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit_info);
+
         networkingService = ( (myApp)getApplication()).getNetworkingService();
         jsonService = ( (myApp)getApplication()).getJsonService();
         networkingService.listener=this;
 
         String fruitName = getIntent().getStringExtra("SelectedFruit");
         networkingService.fetchFruitsInfo(fruitName);
- descriptionTxt = findViewById(R.id.first_fragment);
-descriptionTxt.setOnClickListener(this);
+   descriptionTxt = findViewById(R.id.first_fragment);
+   descriptionTxt.setOnClickListener(this);
 
         fruitTxt = findViewById(R.id.fruitName);
         fruitTxt.setText(fruitName);
@@ -52,7 +55,7 @@ descriptionTxt.setOnClickListener(this);
         try {
             FruitData fruitData =jsonService.parseFruitsSecondAPIJson(jsonString);
         //    fruitInfoText.setText(fruitData.description);
-desText=fruitData.description;
+   desText=fruitData.description;
             fruitInfoText.setText("DESCRIPTION" +"\n" +fruitData.description+ "\n\n"
                     +"USES" +"\n" +fruitData.uses+ "\n\n" +"HEALTH"+"\n" +fruitData.health);
             networkingService.listener=this;

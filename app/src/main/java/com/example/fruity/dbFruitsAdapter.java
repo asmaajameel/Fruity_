@@ -13,7 +13,7 @@ import java.util.List;
 public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksViewHolder> {
 
     interface fruitClickListner {
-        public void fruitClicked(Fruit selectedCity);
+        public void fruitClickedListener(Fruit selectedFruit);
     }
     private Context myFruittx;
     public List<Fruit> fruitList;
@@ -50,7 +50,9 @@ public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksV
         @Override
         public void onClick(View view) {
             Fruit fruit = fruitList.get(getAdapterPosition());
-            listner.fruitClicked(fruit);
+            listner.fruitClickedListener(fruit);
         }
+
     }
+
 }
