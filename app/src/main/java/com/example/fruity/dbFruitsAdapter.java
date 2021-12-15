@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksViewHolder> {
@@ -16,7 +17,7 @@ public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksV
         public void fruitClickedListener(Fruit selectedFruit);
     }
     private Context myFruittx;
-    public List<Fruit> fruitList;
+    public List<Fruit> fruitList=new ArrayList<>(0);
     fruitClickListner listner;
     public dbFruitsAdapter(Context myFruittx, List<Fruit> fruitList) {
         this.myFruittx = myFruittx;
@@ -35,7 +36,6 @@ public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksV
         Fruit t = fruitList.get(position);
         holder.fruitTextView.setText(t.getFruitName() );
     }
-
     @Override
     public int getItemCount() {
         return fruitList.size();
@@ -45,14 +45,19 @@ public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksV
         public TasksViewHolder(View itemView) {
             super(itemView);
             fruitTextView = itemView.findViewById(R.id.fruity);
-            itemView.setOnClickListener(this);
+            fruitTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Fruit fruit = fruitList.get(getAdapterPosition());
+           listner.fruitClickedListener(fruit);
+                }
+            });
+           // itemView.setOnClickListener(this);
         }
         @Override
         public void onClick(View view) {
-            Fruit fruit = fruitList.get(getAdapterPosition());
-            listner.fruitClickedListener(fruit);
+//            Fruit fruit = fruitList.get(getAdapterPosition());
+//            listner.fruitClickedListener(fruit);
         }
-
     }
-
 }

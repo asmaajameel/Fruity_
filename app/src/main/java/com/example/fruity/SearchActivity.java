@@ -83,7 +83,7 @@ public class SearchActivity extends AppCompatActivity implements
                 }
                 return false;
             }
-        });//ok
+        });
         return true;
     }
     @Override
@@ -95,27 +95,27 @@ public class SearchActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void fruitClicked(Fruit selectedFruit) {
+    public void fruitClicked(Fruit selectedFruit) {   intent(selectedFruit);
         // show an alert to ask the usr for saving this fruit to db
-        builder.create();
-        builder.setTitle("Would you like to save this Fruit?");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dbService.saveNewFruit(selectedFruit);
-                finish();
-                Log.d("Fruity App","in dialog ok button");
-                intent(selectedFruit);
-            }
-        });
-        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d("Fruity App","in dialog cancel button");
-                intent(selectedFruit);
-            }
-        });
-        builder.show();
+//        builder.create();
+//        builder.setTitle("Would you like to save this Fruit?");
+//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                dbService.saveNewFruit(selectedFruit);
+//                finish();
+//                Log.d("Fruity App","in dialog ok button");
+//                intent(selectedFruit);
+//            }
+//        });
+//        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                Log.d("Fruity App","in dialog cancel button");
+//                intent(selectedFruit);
+//            }
+//        });
+//        builder.show();
 
  //     dbService.saveNewFruit(selectedFruit);
 //        finish();

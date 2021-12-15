@@ -6,9 +6,9 @@
     app:cardCornerRadius="15dp"
     android:backgroundTint="@color/Aquamarine"
 android:layout_marginStart="10dp"
-    app:cardElevation="8dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
-    android:layout_margin="3dp"
+    android:layout_margin="1dp"
     android:layout_gravity="center"
     >
     <LinearLayout

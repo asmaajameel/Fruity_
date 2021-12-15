@@ -22,6 +22,7 @@ public class FruitInfoActivity extends AppCompatActivity implements
         NetworkingService.NetworkingListener,
         View.OnClickListener ,
         DescriptionFragment.AddDesFruitListener{
+    String AddFruitName;
     Button save;
     DatabaseService dbService;
     AlertDialog.Builder builder;
@@ -45,6 +46,7 @@ public class FruitInfoActivity extends AppCompatActivity implements
         jsonService = ( (myApp)getApplication()).getJsonService();
         networkingService.listener=this;
 
+
         String fruitName = getIntent().getStringExtra("SelectedFruit");
         networkingService.fetchFruitsInfo(fruitName);
    descriptionTxt = findViewById(R.id.first_fragment);
@@ -52,6 +54,7 @@ public class FruitInfoActivity extends AppCompatActivity implements
 
         fruitTxt = findViewById(R.id.fruitName);
         fruitTxt.setText(fruitName);
+        AddFruitName=fruitName;
         builder = new AlertDialog.Builder(this);
         fruitInfoText = findViewById(R.id.fruits);
         imageView = findViewById(R.id.image);
@@ -60,16 +63,17 @@ public class FruitInfoActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 showAnAlert();
+
             }
         });
 
         moreInformation = findViewById(R.id.Extra);
-        Intent intent = new Intent(this,ExtraInfoActivity.class);
+       // Intent intent = new Intent(this,ExtraInfoActivity.class);
         moreInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                intent.putExtra("MoreInformation",fruit.getFruitName());
+                Intent intent = new Intent(FruitInfoActivity.this,ExtraInfoActivity.class);
+                intent.putExtra("MoreInformation",AddFruitName);
                 startActivity(intent);
             }
         });
@@ -80,8 +84,10 @@ public class FruitInfoActivity extends AppCompatActivity implements
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                dbService.saveNewFruit(obj);
+                fruit.fruitName=AddFruitName;
+                dbService.saveNewFruit(fruit);
                 finish();
+
                 Log.d("Fruity App","in dialog ok button");
             }
         });
@@ -94,20 +100,22 @@ public class FruitInfoActivity extends AppCompatActivity implements
         builder.show();
     }
 
-    @SuppressLint("SetTextI18n")
+    //@SuppressLint("SetTextI18n")
     @Override
     public void APINetworkListner(String jsonString) {
         try {
+
             FruitData fruitData =jsonService.parseFruitsSecondAPIJson(jsonString);
         //    fruitInfoText.setText(fruitData.description);
    desText=fruitData.description;
             fruitInfoText.setText("DESCRIPTION" +"\n" +fruitData.description+ "\n\n"
-                    +"USES" +"\n" +fruitData.uses+ "\n\n" +"HEALTH"+"\n" +fruitData.health);
+                    +"USES" +"\n" +fruitData.uses+ "\n\n" +"HEALTH"+"\n" +fruitData.health+ "\n\n");
             networkingService.listener=this;
            // String url = "https://tropicalfruitandveg.com/thumb.php?image=images/almondfruit.jpg";
            networkingService.fetchImage(fruitData.imageurl);
             //networkingService.fetchImage(url);
             networkingService.makeURL(fruitData.imageurl);
+           // System.out.println(fruitData.othname+"##########################");
 
         } catch (JSONException e) {
             e.printStackTrace();

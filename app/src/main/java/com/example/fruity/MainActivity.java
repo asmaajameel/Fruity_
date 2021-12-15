@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements
     DatabaseService dbService;
     dbFruitsAdapter adapter;
     RecyclerView list;
-    ArrayList<Fruit> newFruit;//=new ArrayList<>();
+    ArrayList<Fruit> newFruit=new ArrayList<>(0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this));
         adapter.listner = this;
+        adapter.notifyDataSetChanged();
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(list);
         //LinearLayoutManager layoutManager
@@ -47,13 +48,15 @@ public class MainActivity extends AppCompatActivity implements
         //myItems.setLayoutManager(layoutManager);
 
     }
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dbService.getAllFruitsFromDB();
+       // adapter.notifyDataSetChanged();
 //        networkingService = ( (myApp)getApplication()).getNetworkingService();
 //        jsonService = ( (myApp)getApplication()).getJsonService();
 //        networkingService.listener = this;
-//    }
+    }
     public void addNewFruit(View view) {
         Intent searchIntent = new Intent(this, SearchActivity.class);
         startActivity(searchIntent);
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements
       //  dbFruitsAdapter myAdapter = new dbFruitsAdapter(this,newFruit);
         adapter = new dbFruitsAdapter(this,newFruit);
         list.setAdapter(adapter);
+        adapter.fruitList=newFruit;
         adapter.notifyDataSetChanged();
     }
 
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements
 
         @Override
         public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-            //Toast.makeText(MainActivity.this, "Item Moveing", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Item Moveing", Toast.LENGTH_SHORT).show();
 
             return false;
         }
@@ -97,7 +101,8 @@ public class MainActivity extends AppCompatActivity implements
             //Remove swiped item from list and notify the RecyclerView
             int position = viewHolder.getAdapterPosition();
             dbService.deleteFruitName(adapter.fruitList.get(position));
-             newFruit.remove(position);
+           // dbService.deleteFruitName(newFruit.get(position).getFruitName());
+            //newFruit.remove(position);
             adapter.fruitList.remove(position);
             // we have to remove it from db as well
            // adapter.notifyItemRemoved(position);

@@ -15,10 +15,10 @@ import org.json.JSONException;
 
 public class ExtraInfoActivity extends AppCompatActivity implements
         NetworkingService.NetworkingListener{
-    DatabaseService dbService;
+
     AlertDialog.Builder builder;
     TextView fruitTxt;
-    String desText;
+
     TextView fruitInfoText;
     ImageView imageView;
     NetworkingService networkingService;
@@ -27,12 +27,9 @@ public class ExtraInfoActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extra_info);
-        dbService = ((myApp)getApplication()).getDbService();
         networkingService = ( (myApp)getApplication()).getNetworkingService();
         jsonService = ( (myApp)getApplication()).getJsonService();
         networkingService.listener=this;//SelectedFruit
-        //String fruitName2 = getIntent().getStringExtra("SelectedFruit");
-
         String fruitName = getIntent().getStringExtra("MoreInformation");
         networkingService.fetchFruitsInfo(fruitName);
 
@@ -42,20 +39,18 @@ public class ExtraInfoActivity extends AppCompatActivity implements
         fruitInfoText = findViewById(R.id.fruits);
         imageView = findViewById(R.id.image);
     }
-    @SuppressLint("SetTextI18n")
+   // @SuppressLint("SetTextI18n")
     @Override
     public void APINetworkListner(String jsonString) {
         try {
             FruitData fruitData =jsonService.parseFruitsSecondAPIJson(jsonString);
-            //    fruitInfoText.setText(fruitData.description);
-            desText=fruitData.description;
             fruitInfoText.setText("OTHER NAME" +"\n" +fruitData.othname+ "\n\n"
                     +"PROPAGATION" +"\n" +fruitData.propagation+ "\n\n" +"soil"+"\n" +fruitData.soil+ "\n\n"
-                    +"climate" +"\n" +fruitData.climate);
+                    +"climate" +"\n" +fruitData.climate+ "\n");
             networkingService.listener=this;
             networkingService.fetchImage(fruitData.imageurl);
             networkingService.makeURL(fruitData.imageurl);
-
+            System.out.println(fruitData.othname+"##########################");
         } catch (JSONException e) {
             e.printStackTrace();
         }

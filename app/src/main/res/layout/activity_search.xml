@@ -8,7 +8,6 @@
     tools:context=".SearchActivity"
     android:background="@drawable/img"
     >
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fruitList"
         android:layout_width="313dp"
@@ -17,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.495">
+        app:layout_constraintVertical_bias="0.73">
 
     </androidx.recyclerview.widget.RecyclerView>
 
