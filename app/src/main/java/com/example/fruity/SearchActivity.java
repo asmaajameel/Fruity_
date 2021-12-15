@@ -83,7 +83,7 @@ public class SearchActivity extends AppCompatActivity implements
                 }
                 return false;
             }
-        });
+        });//ok
         return true;
     }
     @Override
