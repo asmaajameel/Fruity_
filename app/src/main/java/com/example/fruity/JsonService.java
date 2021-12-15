@@ -59,8 +59,13 @@ public class JsonService {
         String desString   = fruitObject.getString("description");
         String usesString  = fruitObject.getString("uses");
         String healthString = fruitObject.getString("health");
+        String othname = fruitObject.getString("othname");
+        String propagation = fruitObject.getString("propagation");
+        String soil = fruitObject.getString("soil");
+        String climate = fruitObject.getString("climate");
 
-        fruitData = new FruitData(desString,imageString,usesString,healthString);
+//        fruitData = new FruitData(desString,imageString,usesString,healthString);
+        fruitData = new FruitData(desString,imageString,usesString,healthString,othname,propagation,soil,climate);
         return fruitData;
     }
 }

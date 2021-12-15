@@ -50,19 +50,27 @@ public class DatabaseService {
         });
     }
 
-    void saveNewFruit(Fruit f){
-        fruitExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                dbInstance.getDao().addNewFruit(f);
-            }
-        });
-    }
+//    void saveNewFruit(String f){
+//        fruitExecutor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                dbInstance.getDao().addNewFruit(f);
+//            }
+//        });
+//    }
     public void deleteFruitName(Fruit f){
         fruitExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 dbInstance.getDao().deleteFruit(f);
+            }
+        });
+    }
+    void saveNewFruit(Fruit f){
+        fruitExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dbInstance.getDao().addNewFruit(f);
             }
         });
     }

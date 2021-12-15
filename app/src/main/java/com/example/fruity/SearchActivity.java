@@ -1,10 +1,12 @@
 package com.example.fruity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,9 +23,11 @@ public class SearchActivity extends AppCompatActivity implements
     ArrayList<Fruit> fruits = new ArrayList<Fruit>();
     RecyclerView recyclerView;
     FruitAdapter adapter;
+    AlertDialog.Builder builder;
     NetworkingService networkingService;
     JsonService jsonService;
     DatabaseService dbService;
+    Fruit fruit = new Fruit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +41,13 @@ public class SearchActivity extends AppCompatActivity implements
         dbService = ((myApp)getApplication()).getDbService();
         networkingService = ( (myApp)getApplication()).getNetworkingService();
         jsonService = ( (myApp)getApplication()).getJsonService();
+        builder = new AlertDialog.Builder(this);
 
 
         networkingService.listener = this;
-
+//        Intent intent = new Intent(this,ExtraInfoActivity.class);
+//        intent.putExtra("MoreInformation",fruit.getFruitName());
+//        startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,14 +96,30 @@ public class SearchActivity extends AppCompatActivity implements
 
     @Override
     public void fruitClicked(Fruit selectedFruit) {
-        // show an alert to ask the usr for saving this city to db
+        // show an alert to ask the usr for saving this fruit to db
+        builder.create();
+        builder.setTitle("Would you like to save this Fruit?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dbService.saveNewFruit(selectedFruit);
+                finish();
+                Log.d("Fruity App","in dialog ok button");
+                intent(selectedFruit);
+            }
+        });
+        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d("Fruity App","in dialog cancel button");
+                intent(selectedFruit);
+            }
+        });
+        builder.show();
 
-        Intent intent = new Intent(this,FruitInfoActivity.class);
-        intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
-        startActivity(intent);
-        dbService.saveNewFruit(selectedFruit);
-        finish();
-//        Intent searchIntent = new Intent(this, FruitInfoActivity.class);
+ //     dbService.saveNewFruit(selectedFruit);
+//        finish();
+//        Intent searchIntent = new Intent(this, FruitInfoActivity.class);//
 //        startActivity(searchIntent);
     }
 //    @Override
@@ -105,7 +128,12 @@ public class SearchActivity extends AppCompatActivity implements
 //        intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
 //        startActivity(intent);
 //    }
+public void intent(Fruit selectedFruit) {
+    Intent intent = new Intent(this,FruitInfoActivity.class);
+    intent.putExtra("SelectedFruit",selectedFruit.getFruitName());
 
+    startActivity(intent);
+}
     @Override
     public void APINetworkListner(String jsonString) {
         Log.d("tag", jsonString);// not parsed yet.
@@ -120,3 +148,29 @@ public class SearchActivity extends AppCompatActivity implements
     }
 
 }
+
+
+
+
+ //   private void showAnAlert(){
+//    builder.create();
+//
+////        builder.setMessage("Your Donation is " + donationObject.getDonatinAmout() +
+////                "$ which completed using " + payment );
+//    builder.setTitle("Would you like to save this Fruit?");
+//    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialogInterface, int i) {
+//            dbService.saveNewFruit();
+//            finish();
+//            Log.d("Fruity App","in dialog ok button");
+//        }
+//    });
+//    builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialogInterface, int i) {
+//            Log.d("Fruity App","in dialog cancel button");
+//        }
+//    });
+//    builder.show();
+//}

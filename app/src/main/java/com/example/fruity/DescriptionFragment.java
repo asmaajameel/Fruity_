@@ -44,11 +44,10 @@ public class DescriptionFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_description, container, false);
         TextView dsTxt = (TextView) v.findViewById(R.id.description);
-        dsTxt.setText(getArguments().getInt("description from FruitInfoActivity"));
+        dsTxt.setText(getArguments().getString("description from FruitInfoActivity"));
         //dsTxt.setText(this.getArguments().getString("fruitInfo"));
 
 
