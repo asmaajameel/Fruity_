@@ -100,7 +100,7 @@ public class FruitInfoActivity extends AppCompatActivity implements
         builder.show();
     }
 
-    //@SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n")
     @Override
     public void APINetworkListner(String jsonString) {
         try {
@@ -156,7 +156,7 @@ public void onClick(View v) {
         if (questionFragmentObject == null) {// that mean the area is empty
             fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
         } else {// the area is already has third fragment
-            fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
+          //  fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
 ////            Bundle bundle = new Bundle();
 ////         bundle.putString("fruitInfo",fruitInfoText.getText().toString());
 ////         DescriptionFragment ds = new DescriptionFragment();
