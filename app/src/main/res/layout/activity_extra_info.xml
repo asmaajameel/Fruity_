@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FruitInfoActivity">
+    tools:context=".FruitInfoActivity"
+android:background="@drawable/img_7"
+   >
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="389dp"
-        android:layout_height="512dp"
+        android:layout_width="372dp"
+        android:layout_height="482dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.32999998">
+        app:layout_constraintVertical_bias="0.88">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -23,6 +25,7 @@
             android:fillViewport="true">
 
             <TextView
+
                 android:id="@+id/fruits"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,14 +41,15 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="159dp"
-        android:layout_height="141dp"
+        android:layout_width="377dp"
+        android:layout_height="146dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fruitName"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/fruitName"
@@ -62,23 +66,11 @@
 
     </TextView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="199dp" />
+        app:layout_constraintGuide_end="515dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

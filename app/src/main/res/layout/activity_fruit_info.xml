@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_1"
     tools:context=".FruitInfoActivity">
 
     <LinearLayout
@@ -22,6 +23,7 @@
             android:fillViewport="true">
 
             <TextView
+
                 android:id="@+id/fruits"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -48,6 +50,7 @@
         app:layout_constraintVertical_bias="0.48000002" />
 
     <TextView
+
         android:id="@+id/fruitName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,8 +132,8 @@
 
     <FrameLayout
         android:id="@+id/main_Frame"
-        android:layout_width="399dp"
-        android:layout_height="391dp"
+        android:layout_width="375dp"
+        android:layout_height="375dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

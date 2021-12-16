@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:textColorHighlight="@color/DarkSalmon"
             android:text="Getting Fruit Description ..."
             android:textSize="23sp">
 
