@@ -5,8 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.TasksViewHolder> {
@@ -16,6 +21,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.TasksViewHol
     }
     private Context myFruittx;
     public List<Fruit> fruitList;
+    //public ArrayList<FruitData> ff;
     fruitClickListner listner;
     public FruitAdapter(Context myFruittx, List<Fruit> fruitList) {
         this.myFruittx = myFruittx;
@@ -32,7 +38,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.TasksViewHol
     @Override
     public void onBindViewHolder(TasksViewHolder holder, int position) {
         Fruit t = fruitList.get(position);
+        //FruitData f = ff.get(position);
         holder.fruitTextView.setText(t.getFruitName() );
+        Glide.with(myFruittx)
+                .load(t.imageurl)
+                .into(holder.img);
     }
 
     @Override
@@ -41,9 +51,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.TasksViewHol
     }
     class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView fruitTextView;//
+        ImageView img;
         public TasksViewHolder(View itemView) {
             super(itemView);
             fruitTextView = itemView.findViewById(R.id.fruity);
+            img = itemView.findViewById(R.id.imagee);
             itemView.setOnClickListener(this);
         }
         @Override

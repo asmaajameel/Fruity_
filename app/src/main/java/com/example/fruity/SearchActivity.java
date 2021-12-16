@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class SearchActivity extends AppCompatActivity implements
     NetworkingService networkingService;
     JsonService jsonService;
     DatabaseService dbService;
+    ImageView myImage;
     Fruit fruit = new Fruit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class SearchActivity extends AppCompatActivity implements
         networkingService = ( (myApp)getApplication()).getNetworkingService();
         jsonService = ( (myApp)getApplication()).getJsonService();
         builder = new AlertDialog.Builder(this);
+        myImage = findViewById(R.id.imagee);
 
 
         networkingService.listener = this;

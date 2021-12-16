@@ -27,25 +27,19 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:text="Getting Fruit info. ..."
+
                 android:textSize="23sp">
 
             </TextView>
+            <!--                android:text="Getting Fruit info. ..."-->
         </ScrollView>
-
-        <FrameLayout
-            android:id="@+id/main_Frame"
-            android:layout_width="match_parent"
-            android:layout_height="107dp"
-            tools:context=".DescriptionFragment">
-        </FrameLayout>
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="412dp"
-        android:layout_height="204dp"
+        android:layout_width="505dp"
+        android:layout_height="213dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,5 +125,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.38" />
+
+    <FrameLayout
+        android:id="@+id/main_Frame"
+        android:layout_width="399dp"
+        android:layout_height="391dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:context=".DescriptionFragment">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

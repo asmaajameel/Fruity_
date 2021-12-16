@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Getting Fruit Description ..."
-            android:textSize="20sp">
+            android:textSize="23sp">
 
         </TextView>
     </ScrollView>

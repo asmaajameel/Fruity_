@@ -49,15 +49,6 @@ public class DatabaseService {
             }
         });
     }
-
-//    void saveNewFruit(String f){
-//        fruitExecutor.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                dbInstance.getDao().addNewFruit(f);
-//            }
-//        });
-//    }
     public void deleteFruitName(Fruit f){
         fruitExecutor.execute(new Runnable() {
             @Override

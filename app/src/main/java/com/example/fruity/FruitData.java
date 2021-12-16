@@ -20,7 +20,9 @@ public class FruitData {
         this.soil = soil;
         this.climate = climate;
     }
-//    public FruitData(String description, String imageurl, String uses, String health) {
+
+
+    //    public FruitData(String description, String imageurl, String uses, String health) {
 //        this.description = description;
 //        this.imageurl = imageurl;
 //        this.uses = uses;

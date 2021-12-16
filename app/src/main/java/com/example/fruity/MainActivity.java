@@ -100,10 +100,11 @@ public class MainActivity extends AppCompatActivity implements
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
             //Remove swiped item from list and notify the RecyclerView
             int position = viewHolder.getAdapterPosition();
-            dbService.deleteFruitName(adapter.fruitList.get(position));
-           // dbService.deleteFruitName(newFruit.get(position).getFruitName());
+            //dbService.deleteFruitName(adapter.fruitList.get(position));
+          dbService.deleteFruitName(newFruit.get(position));
             //newFruit.remove(position);
             adapter.fruitList.remove(position);
+           // deleteDatabase(String.valueOf(position));
             // we have to remove it from db as well
            // adapter.notifyItemRemoved(position);
             adapter.notifyDataSetChanged();

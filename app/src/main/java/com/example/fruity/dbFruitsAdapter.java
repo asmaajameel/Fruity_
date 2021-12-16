@@ -27,7 +27,7 @@ public class dbFruitsAdapter extends RecyclerView.Adapter<dbFruitsAdapter.TasksV
 
     @Override
     public TasksViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(myFruittx).inflate(R.layout.recyclerview_fruits, parent, false);
+        View view = LayoutInflater.from(myFruittx).inflate(R.layout.recycleview_fav_row, parent, false);
         return new TasksViewHolder(view);
     }
 

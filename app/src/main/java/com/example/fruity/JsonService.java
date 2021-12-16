@@ -16,8 +16,9 @@ public class JsonService {
             JSONArray fruitArray = jsonObject.getJSONArray("results");
             for (int i = 0 ; i< fruitArray.length(); i++) {
                 JSONObject fruitObject = fruitArray.getJSONObject(i);
-                String pid = fruitObject.getString("tfvname");
-                fruit = new Fruit(pid);
+                String pid = fruitObject.getString("tfvname");//imageurl
+                String imageurl = fruitObject.getString("imageurl");
+                fruit = new Fruit(pid,imageurl);
                 fruitFromAPI.add(fruit);
             }
         } catch (JSONException e) {
