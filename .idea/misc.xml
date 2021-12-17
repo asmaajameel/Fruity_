@@ -11,12 +11,14 @@
         <entry key="app/src/main/res/drawable/add_foreground.xml" value="0.16574074074074074" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.196875" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_extra_info.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout-land/activity_fruit_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_extra_info.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/activity_fruit_info.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main1.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.1578125" />
-        <entry key="app/src/main/res/layout/fragment_description.xml" value="0.14878892733564014" />
+        <entry key="app/src/main/res/layout/fragment_description.xml" value="0.12418300653594772" />
         <entry key="app/src/main/res/layout/recyclerview_cities.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/recyclerview_fruits.xml" value="0.25" />
         <entry key="app/src/main/res/layout/recycleview_fav_row.xml" value="0.1" />
