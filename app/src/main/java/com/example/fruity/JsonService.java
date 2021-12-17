@@ -27,30 +27,6 @@ public class JsonService {
         return  fruitFromAPI;
     }
 
-//    ArrayList<Fruit> plantFromAPI;
-//    public ArrayList<Fruit> parseCitiesAPI2Json(String jsonPlantString){
-//        Fruit plant = new Fruit();
-//        plantFromAPI = new ArrayList<>(0);
-//        try {
-//            JSONObject jsonObject = new JSONObject(jsonPlantString);// root
-//            JSONArray plantArray = jsonObject.getJSONArray("results");
-//            JSONObject plantObject = plantArray.getJSONObject(0);
-//            String pid1 = plantObject.getString("imageurl");
-//            String pid2 = plantObject.getString("tfvname");
-//            String pid3 = plantObject.getString("uses");
-//            String pid4 = plantObject.getString("health");
-//
-////        JSONObject mainObject = jsonObject.getJSONObject("main");
-////        Double temp = mainObject.getDouble("temp");
-//            plant = new Fruit(pid2);
-//            plantFromAPI.add(plant);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return  plantFromAPI;
-//
-//    }
     public  FruitData  parseFruitsSecondAPIJson(String jsonFruitInfoString) throws JSONException {
         FruitData fruitData;
         JSONObject jsonObject = new JSONObject(jsonFruitInfoString);

@@ -19,25 +19,23 @@ import android.widget.TextView;
 import org.json.JSONException;
 
 public class FruitInfoActivity extends AppCompatActivity implements
-        NetworkingService.NetworkingListener,
-        View.OnClickListener ,
-        DescriptionFragment.AddDesFruitListener{
+        NetworkingService.NetworkingListener, View.OnClickListener , DescriptionFragment.AddDesFruitListener{
     String AddFruitName;
     Button save;
     DatabaseService dbService;
     AlertDialog.Builder builder;
     TextView fruitTxt;
-String desText;
-String usText;
-String healthText;
+    String desText;
+    String usText;
+    String healthText;
     Fruit obj;
     TextView fruitInfoText;
     ImageView imageView;
     NetworkingService networkingService;
     JsonService jsonService;
-  Button descriptionTxt;
-  Button usesTxt;
-  Button healthTxt;
+      Button descriptionTxt;
+      Button usesTxt;
+      Button healthTxt;
     Button moreInformation;
     Fruit fruit = new Fruit();
 
@@ -54,12 +52,12 @@ String healthText;
         String fruitName = getIntent().getStringExtra("SelectedFruit");
         networkingService.fetchFruitsInfo(fruitName);
 
-   descriptionTxt = findViewById(R.id.first_fragment);
-   descriptionTxt.setOnClickListener(this);
-   usesTxt=findViewById(R.id.second_fragment);
-   usesTxt.setOnClickListener(this);
-   healthTxt=findViewById(R.id.third_fragment);
-   healthTxt.setOnClickListener(this);
+       descriptionTxt = findViewById(R.id.first_fragment);
+       descriptionTxt.setOnClickListener(this);
+       usesTxt=findViewById(R.id.second_fragment);
+       usesTxt.setOnClickListener(this);
+       healthTxt=findViewById(R.id.third_fragment);
+       healthTxt.setOnClickListener(this);
 
 
         fruitTxt = findViewById(R.id.fruitName);
@@ -116,10 +114,9 @@ String healthText;
         try {
 
             FruitData fruitData =jsonService.parseFruitsSecondAPIJson(jsonString);
-        //    fruitInfoText.setText(fruitData.description);
-   desText=fruitData.description;
-   usText = fruitData.uses;
-   healthText = fruitData.health;
+       desText=fruitData.description;
+       usText = fruitData.uses;
+       healthText = fruitData.health;
 
 
             fruitInfoText.setText("DESCRIPTION" +"\n" +fruitData.description+ "\n");//\n"
@@ -141,18 +138,18 @@ String healthText;
         imageView.setImageBitmap(image);
     }
 
-@Override
-public void onClick(View v) {
-    if (v.getId() == R.id.first_fragment) {
-        fruitInfoText.setVisibility(View.GONE);
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("DESCRIPTION" +"\n" +desText);
-        if (questionFragmentObject == null) {// that mean the area is empty
-            fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
-        } else {
-            fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
-        }
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.first_fragment) {
+            fruitInfoText.setVisibility(View.GONE);
+            FragmentManager fm = getSupportFragmentManager();
+            Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
+            DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("DESCRIPTION" +"\n" +desText);
+            if (questionFragmentObject == null) {// that mean the area is empty
+                fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
+            } else {
+                fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
+            }
 
 
     }else if (v.getId() == R.id.second_fragment){
@@ -184,15 +181,4 @@ public void onClick(View v) {
     public void addDes(String fruitDes) {
 
     }
-
-//    private void openListActivity(){
-//        Intent toListActivity = new Intent(this,ExtraInfoActivity.class);
-//
-//        toListActivity.putParcelableArrayListExtra("MoreInformation",.getListOfDonations());
-//        toListActivity.putExtra("total",DonationManager.getTotal(donationManager.getListOfDonations()));
-//        startActivity(toListActivity);
-//    }
-//
-
-
 }

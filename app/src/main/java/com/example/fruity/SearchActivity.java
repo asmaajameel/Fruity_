@@ -48,9 +48,6 @@ public class SearchActivity extends AppCompatActivity implements
 
 
         networkingService.listener = this;
-//        Intent intent = new Intent(this,ExtraInfoActivity.class);
-//        intent.putExtra("MoreInformation",fruit.getFruitName());
-//        startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +95,8 @@ public class SearchActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void fruitClicked(Fruit selectedFruit) {   intent(selectedFruit);
+    public void fruitClicked(Fruit selectedFruit) {
+        intent(selectedFruit);
         // show an alert to ask the usr for saving this fruit to db
 //        builder.create();
 //        builder.setTitle("Would you like to save this Fruit?");
@@ -151,29 +149,3 @@ public void intent(Fruit selectedFruit) {
     }
 
 }
-
-
-
-
- //   private void showAnAlert(){
-//    builder.create();
-//
-////        builder.setMessage("Your Donation is " + donationObject.getDonatinAmout() +
-////                "$ which completed using " + payment );
-//    builder.setTitle("Would you like to save this Fruit?");
-//    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialogInterface, int i) {
-//            dbService.saveNewFruit();
-//            finish();
-//            Log.d("Fruity App","in dialog ok button");
-//        }
-//    });
-//    builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialogInterface, int i) {
-//            Log.d("Fruity App","in dialog cancel button");
-//        }
-//    });
-//    builder.show();
-//}

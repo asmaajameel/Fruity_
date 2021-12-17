@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity implements
         adapter.notifyDataSetChanged();
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(list);
-        //LinearLayoutManager layoutManager
-        //    = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        //RecyclerView myItems = findViewById(R.id.my_recycler_view);
-        //myItems.setLayoutManager(layoutManager);
 
     }
     @Override
@@ -53,9 +49,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onResume();
         dbService.getAllFruitsFromDB();
        // adapter.notifyDataSetChanged();
-//        networkingService = ( (myApp)getApplication()).getNetworkingService();
-//        jsonService = ( (myApp)getApplication()).getJsonService();
-//        networkingService.listener = this;
     }
     public void addNewFruit(View view) {
         Intent searchIntent = new Intent(this, SearchActivity.class);
@@ -68,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements
 //        adapter.fruitList = dbFruit;
 //        adapter.notifyDataSetChanged();
       newFruit=new ArrayList<Fruit>(dbFruit);
-      //  dbFruitsAdapter myAdapter = new dbFruitsAdapter(this,newFruit);
         adapter = new dbFruitsAdapter(this,newFruit);
         list.setAdapter(adapter);
         adapter.fruitList=newFruit;
@@ -100,25 +92,11 @@ public class MainActivity extends AppCompatActivity implements
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
             //Remove swiped item from list and notify the RecyclerView
             int position = viewHolder.getAdapterPosition();
-            //dbService.deleteFruitName(adapter.fruitList.get(position));
           dbService.deleteFruitName(newFruit.get(position));
-            //newFruit.remove(position);
             adapter.fruitList.remove(position);
-           // deleteDatabase(String.valueOf(position));
-            // we have to remove it from db as well
-           // adapter.notifyItemRemoved(position);
+
             adapter.notifyDataSetChanged();
 
         }
     };
-
-//    @Override
-//    public void APINetworkListner(String jsonString) {
-//
-//    }
-//
-//    @Override
-//    public void APINetworkListnerForImage(Bitmap image) {
-//
-//    }
 }

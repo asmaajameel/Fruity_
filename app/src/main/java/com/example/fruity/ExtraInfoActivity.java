@@ -39,7 +39,7 @@ public class ExtraInfoActivity extends AppCompatActivity implements
         fruitInfoText = findViewById(R.id.fruits);
         imageView = findViewById(R.id.image);
     }
-   // @SuppressLint("SetTextI18n")
+
     @SuppressLint("SetTextI18n")
     @Override
     public void APINetworkListner(String jsonString) {
