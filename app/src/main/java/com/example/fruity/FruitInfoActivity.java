@@ -122,8 +122,8 @@ String healthText;
    healthText = fruitData.health;
 
 
-//            fruitInfoText.setText("DESCRIPTION" +"\n" +fruitData.description+ "\n\n"
-//                    +"USES" +"\n" +fruitData.uses+ "\n\n" +"HEALTH"+"\n" +fruitData.health+ "\n\n");
+            fruitInfoText.setText("DESCRIPTION" +"\n" +fruitData.description+ "\n");//\n"
+                 //  +"USES" +"\n" +fruitData.uses+ "\n\n" +"HEALTH"+"\n" +fruitData.health+ "\n\n");
             networkingService.listener=this;
            // String url = "https://tropicalfruitandveg.com/thumb.php?image=images/almondfruit.jpg";
            networkingService.fetchImage(fruitData.imageurl);
@@ -144,26 +144,7 @@ String healthText;
 @Override
 public void onClick(View v) {
     if (v.getId() == R.id.first_fragment) {
-
-        //public void updateQuestionFragment(int questionID, int colorID) {
-        //        FragmentManager fm = getSupportFragmentManager();
-        //        Fragment questionFragmentObject = (QuestionFragment) fm.findFragmentById(R.id.question_container);
-        //        QuestionFragment questionFragment = QuestionFragment.newInstance(questionID, colorID);
-        //
-        //        if (questionFragmentObject == null) {// that mean the area is empty
-        //            fm.beginTransaction().add(R.id.question_container,questionFragment,"tag").commit();
-        //
-        ////
-        //        } else {// the area is already has third fragment
-        //            // I'm able to delete that fragment
-        //            //fm.beginTransaction().replace(R.id.question_container,questionFragment);
-        //
-        //          //  fm.beginTransaction().remove(questionFragmentObject);
-        //
-        //            fm.beginTransaction().replace(R.id.question_container, questionFragment).commit();
-        //        }
-        //    }
-
+        fruitInfoText.setVisibility(View.GONE);
         FragmentManager fm = getSupportFragmentManager();
         Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("DESCRIPTION" +"\n" +desText);
@@ -171,32 +152,30 @@ public void onClick(View v) {
             fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
         } else {
             fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
-////            Bundle bundle = new Bundle();
-////         bundle.putString("fruitInfo",fruitInfoText.getText().toString());
-////         DescriptionFragment ds = new DescriptionFragment();
-////         ds.setArguments(bundle);
-//getSupportFragmentManager().beginTransaction().replace(R.id.main_Frame,descriptionFragment,null).commit();
         }
 
 
     }else if (v.getId() == R.id.second_fragment){
+        fruitInfoText.setVisibility(View.GONE);
         FragmentManager fm = getSupportFragmentManager();
         Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
         DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("USES" +"\n" +usText);
-        if (questionFragmentObject == null) {// that mean the area is empty
+        if (questionFragmentObject == null) {
             fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
         } else {
             fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
         }
 
 
-    }else {FragmentManager fm = getSupportFragmentManager();
-        Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
-        DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("HEALTH"+"\n" +healthText);
-        if (questionFragmentObject == null) {// that mean the area is empty
-            fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
-        } else {
-            fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
+    }else {
+            fruitInfoText.setVisibility(View.GONE);
+             FragmentManager fm = getSupportFragmentManager();
+            Fragment questionFragmentObject = (DescriptionFragment) fm.findFragmentById(R.id.main_Frame);
+            DescriptionFragment descriptionFragment = DescriptionFragment.newInstance("HEALTH"+"\n" +healthText);
+            if (questionFragmentObject == null) {
+                fm.beginTransaction().add(R.id.main_Frame, descriptionFragment, "tag").commit();
+            } else {
+                fm.beginTransaction().replace(R.id.main_Frame, descriptionFragment).commit();
         }
     }
 }
