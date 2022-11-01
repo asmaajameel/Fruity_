@@ -7,24 +7,26 @@
     tools:context=".DescriptionFragment">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="379dp"
+        android:layout_height="247dp"
         android:layout_margin="10dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963">
 
         <TextView
-            android:textColor="@color/Black"
             android:id="@+id/description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="430dp"
             android:gravity="center"
-            android:textColorHighlight="@color/DarkSalmon"
             android:text="Getting Fruit Description ..."
-            android:textSize="23sp">
+            android:textColor="@color/Black"
+            android:textColorHighlight="@color/DarkSalmon"
+            android:textSize="20sp">
 
         </TextView>
     </ScrollView>

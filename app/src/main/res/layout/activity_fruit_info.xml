@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="379dp"
-        android:layout_height="374dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +19,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="292dp"
             android:fillViewport="true">
 
             <TextView
@@ -40,14 +40,14 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="505dp"
+        android:layout_width="480dp"
         android:layout_height="213dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fruitName"
-        app:layout_constraintVertical_bias="0.48000002" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <TextView
 
@@ -129,16 +129,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_end="347dp" />
 
     <FrameLayout
         android:id="@+id/main_Frame"
-        android:layout_width="375dp"
-        android:layout_height="375dp"
+        android:layout_width="371dp"
+        android:layout_height="274dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
         tools:context=".DescriptionFragment">
 
     </FrameLayout>
